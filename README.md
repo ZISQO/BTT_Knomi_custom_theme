@@ -13,3 +13,5 @@ click to view video via youtube
 - online manual & customize UI tutorials：[here](https://bigtreetech.github.io/docs/KNOMI.html)
 
 - download and extract src folder then overwrite src folder on firmware
+- push boot button before plug usb-c cable on your desktop
+- build and flash via VSCode, have fun!
