@@ -12,6 +12,8 @@ click to view video via youtube
 - using photoshop web export function will improve and much better than other online tool
 - online manual & customize UI tutorials：[here](https://bigtreetech.github.io/docs/KNOMI.html)
 
+
+# How-to build and flash
 - download and extract src folder then overwrite src folder on firmware
 - push boot button before plug usb-c cable on your desktop
 - build and flash via VSCode, have fun!
