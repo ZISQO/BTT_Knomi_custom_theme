@@ -12,3 +12,4 @@ click to view video via youtube
 - using photoshop web export function will improve and much better than other online tool
 - online manual & customize UI tutorials：[here](https://bigtreetech.github.io/docs/KNOMI.html)
 
+- download and extract src folder then overwrite src folder on firmware
