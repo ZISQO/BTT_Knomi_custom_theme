@@ -14,6 +14,6 @@ click to view video via youtube
 
 
 # How-to build and flash
-- download and extract src folder then overwrite src folder on firmware folder(match up the Firmware folder opened in VSCode)
+- download and extract src folder then overwrite src folder on firmware folder(match up the firmware folder opened in VSCode)
 - push boot button before plug usb-c cable on your desktop
 - build and flash via VSCode, have fun!
