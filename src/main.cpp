@@ -117,12 +117,12 @@ void init_label_print_progress()
 
     label_print_progress = lv_label_create(lv_scr_act()); // 텍스트 개체 생성
 
-    lv_style_set_text_font(&style_label_print_progress, &lv_font_montserrat_48);  // 폰트 종류및 크기 설정
-    lv_style_set_text_color(&style_label_print_progress,lv_color_hex(0xAAFF00));  // FF0000  폰트 색상 설정
+    lv_style_set_text_font(&style_label_print_progress, &lv_font_montserrat_48);  // 폰트 종류및 크기
+    lv_style_set_text_color(&style_label_print_progress,lv_color_hex(0xAAFF00));  // 출고 당시 폰트 색상 FF0000
 
-    lv_obj_add_style(label_print_progress,&style_label_print_progress,LV_PART_MAIN); // 텍스트에 스타일 추가
+    lv_obj_add_style(label_print_progress,&style_label_print_progress,LV_PART_MAIN); // 텍스트 스타일
     lv_label_set_text(label_print_progress,TEXT.c_str());
-    lv_obj_align(label_print_progress, LV_ALIGN_CENTER, 0, 0); // 가운데 정렬 표시
+    lv_obj_align(label_print_progress, LV_ALIGN_CENTER, 0, 0); // 정렬 방식
 }
 
 void init_arc_print_progress()
@@ -130,10 +130,10 @@ void init_arc_print_progress()
     arc_print_progress = lv_arc_create(lv_scr_act()); // 스피너 객체 생성
 
     lv_style_set_arc_width(&style_arc_print_progress, 24);  // 스피너 두께 설정
-    lv_style_set_arc_color(&style_arc_print_progress, lv_color_hex(0x000000)); // 스피너 배경 색상 설정
+    lv_style_set_arc_color(&style_arc_print_progress, lv_color_hex(0x000000)); // 스피너 배경 색상
 
-    lv_obj_add_style(arc_print_progress, &style_arc_print_progress, LV_PART_MAIN);  // 스피너 배경에 스타일 적용
-    lv_obj_add_style(arc_print_progress, &style_arc_print_progress, LV_PART_INDICATOR);  // 스피너 전경에 스타일 적용
+    lv_obj_add_style(arc_print_progress, &style_arc_print_progress, LV_PART_MAIN);  // 스피너 배경 스타일
+    lv_obj_add_style(arc_print_progress, &style_arc_print_progress, LV_PART_INDICATOR);  // 스피너 전경 스타일
 
 
     lv_obj_remove_style(arc_print_progress,NULL,LV_PART_KNOB);  // 스타일 제거
@@ -149,69 +149,69 @@ void init_arc_print_progress()
 //----------------------------------------screen2----초기화------------------------------------------------------//
 void init_label_extruder_actual_temp()
 {
-    label_ext_actual_temp = lv_label_create(lv_scr_act()); // 텍스트 개체 생성
+    label_ext_actual_temp = lv_label_create(lv_scr_act()); // 노즐 현재 온도 레이블 생성
 
-    lv_style_set_text_font(&style_label_ext_actual_temp, &lv_font_montserrat_32);  // 폰트 종류및 크기 설정
-    lv_style_set_text_color(&style_label_ext_actual_temp,lv_color_hex(0x97DF6B));  // FF0000  폰트 색상 설정
+    lv_style_set_text_font(&style_label_ext_actual_temp, &lv_font_montserrat_32);  // 폰트 종류및 크기
+    lv_style_set_text_color(&style_label_ext_actual_temp,lv_color_hex(0x97DF6B));  // 출고 당시 폰트 색상 FF0000
 
-    lv_obj_add_style(label_ext_actual_temp,&style_label_ext_actual_temp,LV_PART_MAIN);   // 텍스트에 스타일 추가
+    lv_obj_add_style(label_ext_actual_temp,&style_label_ext_actual_temp,LV_PART_MAIN);   // 텍스트 스타일
     lv_label_set_text(label_ext_actual_temp,text_ext_actual_temp.c_str());
-    lv_obj_align(label_ext_actual_temp, LV_ALIGN_CENTER, 0, 75); // 가운데 정렬 표시
+    lv_obj_align(label_ext_actual_temp, LV_ALIGN_CENTER, 0, 75); // 정렬
 
 }
 
 void init_label_extruder_target_temp()
 {
-    label_ext_target_temp = lv_label_create(lv_scr_act()); // 노즐 온도 객체 생성 
+    label_ext_target_temp = lv_label_create(lv_scr_act()); // 노즐 목표 온도 레이블 생성
 
     lv_style_set_text_font(&style_label_ext_target_temp, &lv_font_montserrat_32);  // 폰트 종류및 크기
-    lv_style_set_text_color(&style_label_ext_target_temp,lv_color_hex(0x97DF6B)); // FF0000  폰트 색상 설정
+    lv_style_set_text_color(&style_label_ext_target_temp,lv_color_hex(0x97DF6B)); // 출고 당시 폰트 색상 FF0000
 
-    lv_obj_add_style(label_ext_target_temp,&style_label_ext_target_temp,LV_PART_MAIN);  // 텍스트에 스타일 추가
+    lv_obj_add_style(label_ext_target_temp,&style_label_ext_target_temp,LV_PART_MAIN);  // 텍스트 스타일
     lv_label_set_text(label_ext_target_temp,text_ext_target_temp.c_str());
-    lv_obj_align(label_ext_target_temp, LV_ALIGN_CENTER, 0, -75); // 가운데 정렬 표시
+    lv_obj_align(label_ext_target_temp, LV_ALIGN_CENTER, 0, -75); // 정렬
 }
 
 void init_label_heaterbed_actual_temp()
 {
-    label_bed_actual_temp = lv_label_create(lv_scr_act()); //创建文字对象
+    label_bed_actual_temp = lv_label_create(lv_scr_act()); // 베드 현재 온도 레이블 생성
 
-    lv_style_set_text_font(&style_label_bed_actual_temp, &lv_font_montserrat_32);  //设置字体样机及大小
-    lv_style_set_text_color(&style_label_bed_actual_temp,lv_color_hex(0x97DF6B));  // FF0000   //设置样式文本字颜色
+    lv_style_set_text_font(&style_label_bed_actual_temp, &lv_font_montserrat_32);  //  폰트 종류및 크기
+    lv_style_set_text_color(&style_label_bed_actual_temp,lv_color_hex(0x97DF6B));  // 출고 당시 폰트 색상 FF0000
 
-    lv_obj_add_style(label_bed_actual_temp,&style_label_bed_actual_temp,LV_PART_MAIN);           //将样式添加到文字对象中
+    lv_obj_add_style(label_bed_actual_temp,&style_label_bed_actual_temp,LV_PART_MAIN); // 텍스트 스타일
     lv_label_set_text(label_bed_actual_temp,text_bed_actual_temp.c_str());
-    lv_obj_align(label_bed_actual_temp, LV_ALIGN_CENTER, 0, 75); //居中显示
+    lv_obj_align(label_bed_actual_temp, LV_ALIGN_CENTER, 0, 75); // 정렬示
 }
 
 void init_label_heaterbed_target_temp()
 {
-    label_bed_target_temp = lv_label_create(lv_scr_act()); //创建文字对象
+    label_bed_target_temp = lv_label_create(lv_scr_act()); // 베드 목표 온도 레이블 생성
 
-    lv_style_set_text_font(&style_label_bed_target_temp, &lv_font_montserrat_32);  //设置字体样机及大小
-    lv_style_set_text_color(&style_label_bed_target_temp,lv_color_hex(0x97DF6B));     //设置样式文本字颜色
+    lv_style_set_text_font(&style_label_bed_target_temp, &lv_font_montserrat_32);  // 폰트 종류및 크기机及大小
+    lv_style_set_text_color(&style_label_bed_target_temp,lv_color_hex(0x97DF6B));     // 출고 당시 폰트 색상 FF0000
 
-    lv_obj_add_style(label_bed_target_temp,&style_label_bed_target_temp,LV_PART_MAIN);           //将样式添加到文字对象中
+    lv_obj_add_style(label_bed_target_temp,&style_label_bed_target_temp,LV_PART_MAIN);  // 텍스트 스타일
     lv_label_set_text(label_bed_target_temp,text_bed_target_temp.c_str());
-    lv_obj_align(label_bed_target_temp, LV_ALIGN_CENTER, 0, -75); //居中显示
+    lv_obj_align(label_bed_target_temp, LV_ALIGN_CENTER, 0, -75); // 정렬示示
 }
 
 void init_arc_extruder_temp()
 {
-    arc_extruder_temp = lv_arc_create(lv_scr_act()); //创建圆弧对象
+    arc_extruder_temp = lv_arc_create(lv_scr_act()); // 노즐 온도 스피너 
 
-    lv_style_set_arc_width(&style_arc_extruder_temp, 8);  // 设置样式的圆弧粗细
-    lv_obj_add_style(arc_extruder_temp, &style_arc_extruder_temp, LV_PART_MAIN);  // 将样式应用到圆弧背景
-    lv_obj_add_style(arc_extruder_temp, &style_arc_extruder_temp, LV_PART_INDICATOR);  // 将样式应用到圆弧前景
+    lv_style_set_arc_width(&style_arc_extruder_temp, 8);  // //스타일및 너비
+    lv_obj_add_style(arc_extruder_temp, &style_arc_extruder_temp, LV_PART_MAIN);  // 중앙부 스타일弧背景
+    lv_obj_add_style(arc_extruder_temp, &style_arc_extruder_temp, LV_PART_INDICATOR);  // 스피너 외곽 스타일弧前景
 
-    lv_obj_remove_style(arc_extruder_temp,NULL,LV_PART_KNOB);  //移除样式
+    lv_obj_remove_style(arc_extruder_temp,NULL,LV_PART_KNOB);  // 스타일 제거
     lv_obj_clear_flag(arc_extruder_temp, LV_OBJ_FLAG_CLICKABLE);
-    lv_obj_set_style_arc_color(arc_extruder_temp, lv_palette_main(LV_PALETTE_ORANGE), LV_PART_INDICATOR);//进度条颜色
-    lv_obj_set_size(arc_extruder_temp,240,240);                   //设置尺寸
-    lv_arc_set_rotation(arc_extruder_temp,270);                   //设置零度位置
-    lv_arc_set_bg_angles(arc_extruder_temp,0,360);                //设置角度
-    lv_arc_set_value(arc_extruder_temp,100);                       //设置初始值
-    lv_obj_center(arc_extruder_temp);                             //居中显示
+    lv_obj_set_style_arc_color(arc_extruder_temp, lv_palette_main(LV_PALETTE_ORANGE), LV_PART_INDICATOR); // 스피너 진행중 색상
+    lv_obj_set_size(arc_extruder_temp,240,240);                   // 표시 크기
+    lv_arc_set_rotation(arc_extruder_temp,270);                   // 표시 위치
+    lv_arc_set_bg_angles(arc_extruder_temp,0,360);                // 표시 각도
+    lv_arc_set_value(arc_extruder_temp,100);                      // 초기 값 설정
+    lv_obj_center(arc_extruder_temp);                             // 노즐 온도 가운데 표시
 }
 
 void init_arc_heaterbed_temp()
