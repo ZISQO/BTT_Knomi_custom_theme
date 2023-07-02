@@ -979,13 +979,19 @@ void loop()
           }
 
           if(httpswitch==1){
-            http.begin("http://"+klipper_ip+"/api/printer"); //获取温度
+            http.begin("http://"+klipper_ip+"/api/printer"); // PARSE PRINTER INFO
           }else if(httpswitch==2){
-            http.begin("http://"+klipper_ip+"/printer/objects/query?display_status"); //获取打印
+            http.begin("http://"+klipper_ip+"/printer/objects/query?display_status"); // PARSE PRINTER STATUS
           }else if(httpswitch==3){
-            http.begin("http://"+klipper_ip+"/printer/objects/query?gcode_macro%20G28"); //获取home状态
+            http.begin("http://"+klipper_ip+"/printer/objects/query?gcode_macro%20_KNOMI_STATUS"); // G28
           }else if(httpswitch==4){
-            http.begin("http://"+klipper_ip+"/printer/objects/query?gcode_macro%20BED_MESH_CALIBRATE"); //获取levelling状态
+            http.begin("http://"+klipper_ip+"/printer/objects/query?gcode_macro%20_KNOMI_STATUS"); // QUAD_GANTRY_LEVEL
+          }else if(httpswitch==5){
+            http.begin("http://"+klipper_ip+"/printer/objects/query?gcode_macro%20_KNOMI_STATUS"); // CALIBRATE_Z
+          }else if(httpswitch==6){
+            http.begin("http://"+klipper_ip+"/printer/objects/query?gcode_macro%20_KNOMI_STATUS"); // BED_MESH_CALIBRATE
+          }else if(httpswitch==7){
+            http.begin("http://"+klipper_ip+"/printer/objects/query?gcode_macro%20_KNOMI_STATUS"); // EXTRA (NOT IN USE)
           }else{
 
           }
@@ -1076,28 +1082,56 @@ void loop()
                   Serial.println(nameStrpriting);
                   
                   httpswitch = 3;
-              }else if(httpswitch == 3){   //home状态
+              }else if(httpswitch == 3){   // parse g28 result
 
-                  String nameStr8 = doc["result"]["status"]["gcode_macro G28"]["homing"].as<String>();
+                  String nameStr8 = doc["result"]["status"]["gcode_macro _KNOMI_STATUS"]["homing"].as<String>();
                   Serial.println(nameStr8);
 
                   if(nameStr8 == "true"){
                       homing_status = 1; 
-                      display_step = 12;  //更快进入显示 
+                      display_step = 12;  // 12 step for homing ani-gif
                       timer_contne = 0;         
                   }else{
                       homing_status = 0;  
                   }
 
                   httpswitch = 4;
-              }else if(httpswitch == 4){   //levelling状态
+              }else if(httpswitch == 4){   // parse qgl result
 
-                  String nameStr9 = doc["result"]["status"]["gcode_macro BED_MESH_CALIBRATE"]["probing"].as<String>();
+                  String nameStr8 = doc["result"]["status"]["gcode_macro _KNOMI_STATUS"]["qgl"].as<String>();
+                  Serial.println(nameStr8);
+
+                  if(nameStr8 == "true"){
+                      levelling_status = 1;    
+                      display_step = 13;  // 13 step for homing ani-gif 
+                      timer_contne = 0;                   
+                  }else{
+                      levelling_status = 0; 
+                  }
+
+                  httpswitch = 5;
+              }else if(httpswitch == 5){   // parsle calibrate_z result
+
+                  String nameStr8 = doc["result"]["status"]["gcode_macro _KNOMI_STATUS"]["calibratez"].as<String>();
+                  Serial.println(nameStr8);
+
+                  if(nameStr8 == "true"){
+                      levelling_status = 1;    
+                      display_step = 13;  // 13 step for levelling.c for display ani-gif   
+                      timer_contne = 0;                   
+                  }else{
+                      levelling_status = 0; 
+                  }
+
+                  httpswitch = 6;
+              }else if(httpswitch == 6){   // parse bed_mesh_calibrate result 
+
+                  String nameStr9 = doc["result"]["status"]["gcode_macro _KNOMI_STATUS"]["probing"].as<String>();
                   Serial.println(nameStr9);
 
                   if(nameStr9 == "true"){
                       levelling_status = 1;    
-                      display_step = 13;  //更快进入显示  
+                      display_step = 13;  // 13 step for levelling.c for display ani-gif 
                       timer_contne = 0;                   
                   }else{
                       levelling_status = 0; 
